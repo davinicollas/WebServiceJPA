@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Profile;
 
 import com.example.webServiceJPA.enity.User;
 import com.example.webServiceJPA.respositories.UserRepository;
-
+/*usuario test de acordo com o declarado no application proprietes*/
 @Configuration
 @Profile("test")
 public class TestConfig implements CommandLineRunner{
