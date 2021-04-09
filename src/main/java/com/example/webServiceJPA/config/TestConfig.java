@@ -8,9 +8,11 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 
+import com.example.webServiceJPA.enity.Category;
 import com.example.webServiceJPA.enity.Order;
 import com.example.webServiceJPA.enity.User;
 import com.example.webServiceJPA.enity.enums.OrderStatus;
+import com.example.webServiceJPA.respositories.CategoryRepository;
 import com.example.webServiceJPA.respositories.OrderRepository;
 import com.example.webServiceJPA.respositories.UserRepository;
 /*usuario test de acordo com o declarado no application proprietes*/
@@ -21,6 +23,9 @@ public class TestConfig implements CommandLineRunner{
 	private UserRepository userRepository;
 	@Autowired
 	private OrderRepository orderRepository;
+	@Autowired
+	private CategoryRepository categoryRepository;
+	
 
 	@Override
 	public void run(String... args) throws Exception {
@@ -33,8 +38,16 @@ public class TestConfig implements CommandLineRunner{
 		Order o2 = new Order(null, Instant.parse("2019-07-21T03:42:10Z"),OrderStatus.WAITING_PAYMENT, u2); 
 		Order o3 = new Order(null, Instant.parse("2019-07-22T15:21:22Z"), OrderStatus.WAITING_PAYMENT,u1);
 		
+		Category cat1 = new Category(null, "Electronics"); 
+		Category cat2 = new Category(null, "Books"); 
+		Category cat3 = new Category(null, "Computers"); 
+
+		
+		
+		
 		userRepository.saveAll(Arrays.asList(u1,u2));
 		orderRepository.saveAll(Arrays.asList(o1,o2,o3));
+		categoryRepository.saveAll(Arrays.asList(cat1,cat2,cat3));
 	
 	}
 	
