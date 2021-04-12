@@ -10,10 +10,12 @@ import org.springframework.context.annotation.Profile;
 
 import com.example.webServiceJPA.enity.Category;
 import com.example.webServiceJPA.enity.Order;
+import com.example.webServiceJPA.enity.OrderItem;
 import com.example.webServiceJPA.enity.Products;
 import com.example.webServiceJPA.enity.User;
 import com.example.webServiceJPA.enity.enums.OrderStatus;
 import com.example.webServiceJPA.respositories.CategoryRepository;
+import com.example.webServiceJPA.respositories.OrdemItemRepository;
 import com.example.webServiceJPA.respositories.OrderRepository;
 import com.example.webServiceJPA.respositories.ProductsRepository;
 import com.example.webServiceJPA.respositories.UserRepository;
@@ -29,6 +31,8 @@ public class TestConfig implements CommandLineRunner{
 	private CategoryRepository categoryRepository;
 	@Autowired
 	private ProductsRepository productsRepository;
+	@Autowired
+	private OrdemItemRepository OrdemItemRepository;
 
 	@Override
 	public void run(String... args) throws Exception {
@@ -68,8 +72,12 @@ public class TestConfig implements CommandLineRunner{
 		productsRepository.saveAll(Arrays.asList(p1,p2,p3,p4,p5));
 
 
+		OrderItem oi1 = new OrderItem(o1, p1, 2, p1.getPrice()); 
+		OrderItem oi2 = new OrderItem(o1, p3, 1, p3.getPrice()); 
+		OrderItem oi3 = new OrderItem(o2, p3, 2, p3.getPrice()); 
+		OrderItem oi4 = new OrderItem(o3, p5, 2, p5.getPrice());
 		
-		
+		OrdemItemRepository.saveAll(Arrays.asList(oi1,oi2,oi3,oi4));
 	
 	}
 	
