@@ -10,10 +10,12 @@ import org.springframework.context.annotation.Profile;
 
 import com.example.webServiceJPA.enity.Category;
 import com.example.webServiceJPA.enity.Order;
+import com.example.webServiceJPA.enity.Products;
 import com.example.webServiceJPA.enity.User;
 import com.example.webServiceJPA.enity.enums.OrderStatus;
 import com.example.webServiceJPA.respositories.CategoryRepository;
 import com.example.webServiceJPA.respositories.OrderRepository;
+import com.example.webServiceJPA.respositories.ProductsRepository;
 import com.example.webServiceJPA.respositories.UserRepository;
 /*usuario test de acordo com o declarado no application proprietes*/
 @Configuration
@@ -25,7 +27,8 @@ public class TestConfig implements CommandLineRunner{
 	private OrderRepository orderRepository;
 	@Autowired
 	private CategoryRepository categoryRepository;
-	
+	@Autowired
+	private ProductsRepository productsRepository;
 
 	@Override
 	public void run(String... args) throws Exception {
@@ -42,12 +45,18 @@ public class TestConfig implements CommandLineRunner{
 		Category cat2 = new Category(null, "Books"); 
 		Category cat3 = new Category(null, "Computers"); 
 
-		
+		Products p1 = new Products(null, "The Lord of the Rings", "Lorem ipsum dolor sit amet, consectetur.", 90.5, ""); 
+		Products p2 = new Products(null, "Smart TV", "Nulla eu imperdiet purus. Maecenas ante.", 2190.0, ""); 
+		Products p3 = new Products(null, "Macbook Pro", "Nam eleifend maximus tortor, at mollis.", 1250.0, ""); 
+		Products p4 = new Products(null, "PC Gamer", "Donec aliquet odio ac rhoncus cursus.", 1200.0, ""); 
+		Products p5 = new Products(null, "Rails for Dummies", "Cras fringilla convallis sem vel faucibus.", 100.99, ""); 
+
 		
 		
 		userRepository.saveAll(Arrays.asList(u1,u2));
 		orderRepository.saveAll(Arrays.asList(o1,o2,o3));
 		categoryRepository.saveAll(Arrays.asList(cat1,cat2,cat3));
+		productsRepository.saveAll(Arrays.asList(p1,p2,p3,p4,p5));
 	
 	}
 	

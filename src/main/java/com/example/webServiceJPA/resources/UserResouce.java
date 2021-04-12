@@ -16,16 +16,16 @@ import com.example.webServiceJPA.service.UserService;
 @RequestMapping(value = "/users")
 public class UserResouce {
 	@Autowired	
-	private UserService userservice;
+	private UserService userService;
 	
 	@GetMapping
 	public ResponseEntity<List<User>> findAll() {
-		List<User> list = userservice.findAll();
+		List<User> list = userService.findAll();
 		return ResponseEntity.ok().body(list);
 	}
 	@GetMapping(value = "/{id}")
 	public ResponseEntity<User> findById(@PathVariable Long id){
-		User obj =  userservice.findById(id);
+		User obj =  userService.findById(id);
 		return ResponseEntity.ok().body(obj);
 
 	}
